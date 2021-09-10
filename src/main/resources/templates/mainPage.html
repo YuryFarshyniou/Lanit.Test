@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+<header th:insert="fragments/header :: navigationBar"></header>
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#personCollapse" role="button"
+                   aria-expanded="false" aria-controls="personCollapse">
+                    Add new Person
+                </a>
+            </p>
+            <div class="collapse" id="personCollapse">
+                <div class="card card-body">
+                    <form id="personForm">
+                        <div class="mb-3">
+                            <label for="inputId" class="form-label">Id</label>
+                            <input type="text" class="form-control" id="inputId" aria-describedby="personIdHelp">
+                            <div id="personIdHelp" class="form-text">Enter person id</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPersonName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="inputPersonName" aria-describedby="nameHelp">
+                            <div id="nameHelp" class="form-text">Enter Person name</div>
+                        </div>
+                        <div class="mb-3" >
+                            <label for="inputPersonBirthdate" class="form-label">Birthdate</label>
+                            <input type="date" style="cursor: pointer" class="form-control" id="inputPersonBirthdate" aria-describedby="birthDate">
+                            <div id="birthDate" class="form-text">Enter your birthdate</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div id="postResultDiv"></div>
+        </div>
+        <div class="col-5">
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#carCollapse"
+                   role="button" aria-expanded="false" aria-controls="carCollapse">
+                    Add new Car
+                </a>
+            </p>
+            <div class="collapse" id="carCollapse">
+                <div class="card card-body">
+                    Some placeholder content for the collapse component.
+                    This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/saveExample.js}"></script>
+</body>
+</html>

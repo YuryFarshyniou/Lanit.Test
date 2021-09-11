@@ -1,12 +1,11 @@
 package ru.lanit.test.model.person;
 
-
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import java.util.Date;
 
 @Entity

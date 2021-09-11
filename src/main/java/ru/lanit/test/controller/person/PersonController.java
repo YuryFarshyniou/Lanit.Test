@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.lanit.test.model.person.Person;
+import ru.lanit.test.model.person_with_cars.PersonWithCars;
 import ru.lanit.test.service.personService.IPersonService;
-import ru.lanit.test.validation.Validation;
+import ru.lanit.test.validation.GetValidation;
+import ru.lanit.test.validation.PostValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,12 +18,22 @@ import java.util.Map;
 @RestController
 public class PersonController {
     private final IPersonService personService;
-    private final Validation personValidation;
+    private final PostValidation personValidation;
+    private final GetValidation<PersonWithCars> personWithCarsValidation;
     private final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
-    public PersonController(IPersonService personService,@Qualifier("personValidator") Validation personValidation) {
+    public PersonController(IPersonService personService,
+                            @Qualifier("personValidator") PostValidation personValidation,
+                            GetValidation<PersonWithCars> personWithCarsValidation) {
         this.personService = personService;
         this.personValidation = personValidation;
+        this.personWithCarsValidation = personWithCarsValidation;
+    }
+
+    @GetMapping(value = "/personWithCars")
+    public ResponseEntity<PersonWithCars> getPersonWithCars(@RequestParam(name = "personId") String id) {
+
+        return personWithCarsValidation.validation(id);
     }
 
     @PostMapping(value = "/person")

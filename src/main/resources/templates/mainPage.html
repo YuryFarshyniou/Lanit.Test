@@ -29,9 +29,10 @@
                             <input type="text" class="form-control" id="inputPersonName" aria-describedby="nameHelp">
                             <div id="nameHelp" class="form-text">Enter Person name</div>
                         </div>
-                        <div class="mb-3" >
+                        <div class="mb-3">
                             <label for="inputPersonBirthdate" class="form-label">Birthdate</label>
-                            <input type="date" style="cursor: pointer" class="form-control" id="inputPersonBirthdate" aria-describedby="birthDate">
+                            <input type="date" style="cursor: pointer" class="form-control" id="inputPersonBirthdate"
+                                   aria-describedby="birthDate">
                             <div id="birthDate" class="form-text">Enter your birthdate</div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -42,20 +43,54 @@
         </div>
         <div class="col-5">
             <p>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#carCollapse"
-                   role="button" aria-expanded="false" aria-controls="carCollapse">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#carCollapse" role="button"
+                   aria-expanded="false" aria-controls="carCollapse">
                     Add new Car
                 </a>
             </p>
             <div class="collapse" id="carCollapse">
                 <div class="card card-body">
-                    Some placeholder content for the collapse component.
-                    This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    <form id="carForm">
+                        <div class="mb-3">
+                            <label for="inputIdCar" class="form-label">Id</label>
+                            <input type="text" class="form-control" id="inputIdCar" aria-describedby="carIdHelp">
+                            <div id="carIdHelp" class="form-text">Enter car id</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputCarModel" class="form-label">Model</label>
+                            <input type="text" class="form-control" id="inputCarModel" aria-describedby="modelHelp">
+                            <div id="modelHelp" class="form-text">Enter car model</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputHorsePower" class="form-label">Horsepower</label>
+                            <input type="text" class="form-control" id="inputHorsePower" aria-describedby="Horsepower">
+                            <div id="Horsepower" class="form-text">Enter car's horsepower</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputOwnerId" class="form-label">Owner id</label>
+                            <input type="text" class="form-control" id="inputOwnerId" aria-describedby="Owner">
+                            <div id="Owner" class="form-text">Enter owner's id</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-5">
+            <form id="sendIdForm">
+                <div class="mb-3">
+                    <label for="inputPersonId" class="form-label">PersonId</label>
+                    <input type="text" class="form-control" id="inputPersonId" aria-describedby="PersonId">
+                    <div id="PersonId" class="form-text">Enter person id</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
-<script th:src="@{/js/saveExample.js}"></script>
+<script th:src="@{/js/savePerson.js}"></script>
+<script th:src="@{/js/saveCar.js}"></script>
 </body>
 </html>

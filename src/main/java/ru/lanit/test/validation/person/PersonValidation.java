@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import ru.lanit.test.service.personService.IPersonService;
-import ru.lanit.test.validation.Validation;
+import ru.lanit.test.validation.PostValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component("personValidator")
-public class PersonValidation implements Validation {
+public class PersonValidation implements PostValidation {
     private final IPersonService personIService;
     Logger logger = LoggerFactory.getLogger(PersonValidation.class);
 
@@ -42,11 +42,11 @@ public class PersonValidation implements Validation {
         allValidations.add(validateId(jsonMap.get("id")));
         allValidations.add(validateName(jsonMap.get("name")));
         allValidations.add(validateDate(jsonMap.get("birthdate")));
-        allValidations.add(isPresentPersonInDB(jsonMap.get("id")));
+        allValidations.add(isNotPresentPersonInDB(jsonMap.get("id")));
         return allValidations;
     }
 
-    private boolean isPresentPersonInDB(String id) {
+    private boolean isNotPresentPersonInDB(String id) {
         if (validateId(id)) {
             Long personId = personIService.findPersonId(Long.parseLong(id));
             if (personId == null) {
@@ -61,13 +61,19 @@ public class PersonValidation implements Validation {
     }
 
     private boolean validateId(String id) {
-        if (id == null) {
+        if (id.isEmpty()) {
             logger.warn("Person id is null!");
             return false;
         }
         Pattern pattern = Pattern.compile("^\\d*$");
         Matcher matcher = pattern.matcher(id);
         if (matcher.find()) {
+            try {
+                long personId = Long.parseLong(matcher.group());
+            } catch (NumberFormatException e) {
+                logger.warn("Too big id number!");
+                return false;
+            }
             return true;
         } else {
             logger.warn("This id is not a number!");
@@ -76,7 +82,7 @@ public class PersonValidation implements Validation {
     }
 
     private boolean validateName(String name) {
-        if (name != null) {
+        if (!name.isEmpty()) {
             return true;
         } else {
             logger.warn("Person name is null");
@@ -88,7 +94,7 @@ public class PersonValidation implements Validation {
      * но если с html приходит формат,который был указан в ТЗ, просто меняем паттерн на dd.MM.yyyy
      * и валидируем уже по этому паттерну.*/
     private boolean validateDate(String date) {
-        if (date == null) {
+        if (date.isEmpty()) {
             logger.warn("Birthdate is null!");
             return false;
         }

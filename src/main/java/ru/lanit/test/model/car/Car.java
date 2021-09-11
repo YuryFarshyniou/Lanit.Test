@@ -15,6 +15,9 @@ public class Car {
     private long id;
 
     @Column(nullable = false)
+    private String vendor;
+
+    @Column(nullable = false)
     private String model;
 
     @Column(nullable = false)

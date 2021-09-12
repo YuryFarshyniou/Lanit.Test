@@ -13,4 +13,10 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     Long findCarId(long carID);
 
     List<Car> findAllByOwnerId(long ownerId);
+
+    @Query("select COUNT(c.id) from Car c")
+    Long countCar();
+
+    @Query("select count(distinct c.vendor) from Car c")
+    Long countCarVendor();
 }

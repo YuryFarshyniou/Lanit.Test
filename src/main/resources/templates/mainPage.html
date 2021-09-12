@@ -39,7 +39,6 @@
                     </form>
                 </div>
             </div>
-            <div id="postResultDiv"></div>
         </div>
         <div class="col-5">
             <p>
@@ -85,12 +84,27 @@
                     <input type="text" class="form-control" id="inputPersonId" aria-describedby="PersonId">
                     <div id="PersonId" class="form-text">Enter person id</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Get PersonWithCars entity</button>
             </form>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <form id="callStatistics">
+                <button type="submit" class="btn btn-primary mt-5">Statistics</button>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+
+        <div id="postResultDiv"></div>
     </div>
 </div>
 <script th:src="@{/js/savePerson.js}"></script>
 <script th:src="@{/js/saveCar.js}"></script>
+<script th:src="@{/js/getPersonWithCars.js}"></script>
+<script th:src="@{/js/getStatistics.js}"></script>
+
 </body>
 </html>

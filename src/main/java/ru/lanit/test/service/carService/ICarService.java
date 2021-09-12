@@ -9,4 +9,10 @@ public interface ICarService extends IService<Car> {
     Long findCarId(long id);
 
     List<Car> findAllByOwnerId(long id);
+
+    Long countCar();
+
+    Long countCarVendor();
+
+    void deleteAll();
 }

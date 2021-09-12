@@ -16,4 +16,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     Date findPersonDate(long personID);
 
     Person findPersonById(long personId);
+
+    @Query("select COUNT(p.id) from Person p" )
+    Long countPerson();
 }

@@ -21,7 +21,7 @@ $(document).ready(
                 success: function (result) {
                     if (result === "OK") {
                         $("#postResultDiv").html(
-                            "User successfully added <br>");
+                            "Car was successfully added <br>");
                     } else {
                         $("#postResultDiv").html("<strong>Validation error</strong>");
                     }

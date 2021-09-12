@@ -6,15 +6,12 @@ import ru.lanit.test.model.car.Car;
 import java.util.Date;
 import java.util.List;
 
-@EqualsAndHashCode
-@ToString
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
 public class PersonWithCars {
-    long id;
-    String name;
-    Date birthdate;
-    List<Car> cars;
+    private long id;
+    private String name;
+    private Date birthdate;
+    private List<Car> cars;
 
 }

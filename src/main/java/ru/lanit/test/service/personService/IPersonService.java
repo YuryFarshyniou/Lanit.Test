@@ -11,4 +11,8 @@ public interface IPersonService extends IService<Person> {
     Date findPersonDate(long id);
 
     Person findPersonById(long personId);
+
+    Long countPerson();
+
+    void deleteAll();
 }

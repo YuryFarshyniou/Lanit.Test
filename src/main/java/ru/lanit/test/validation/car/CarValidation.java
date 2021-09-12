@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import ru.lanit.test.model.car.Car;
 import ru.lanit.test.service.carService.ICarService;
 import ru.lanit.test.service.personService.IPersonService;
 import ru.lanit.test.validation.PostValidation;
@@ -34,6 +35,8 @@ public class CarValidation implements PostValidation {
                 return new ResponseEntity<>("Validation problem", HttpStatus.BAD_REQUEST);
             }
         }
+        Car car = createCar(jsonMap);
+        carService.save(car);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
@@ -125,7 +128,12 @@ public class CarValidation implements PostValidation {
             return false;
         }
         int years = getOwnerAge(date);
-        return years >= 18;
+        if(years>=18){
+            return true;
+        }else{
+            logger.warn("Owner's age is less than 18");
+            return false;
+        }
     }
 
     private boolean isNotPresentCarInDB(String id) {
@@ -134,7 +142,7 @@ public class CarValidation implements PostValidation {
             if (carId == null) {
                 return true;
             } else {
-                logger.warn("Person with this id has already exist");
+                logger.warn("Car with this id has already exist");
                 return false;
             }
         }
@@ -149,5 +157,17 @@ public class CarValidation implements PostValidation {
         birthdate.setTimeInMillis(date.getTime());
         now.setTimeInMillis(currentTime);
         return now.get(Calendar.YEAR) - birthdate.get(Calendar.YEAR);
+    }
+
+    private Car createCar(Map<String, String> carInformation) {
+        Car car = new Car();
+        car.setId(Long.parseLong(carInformation.get("id")));
+        car.setHorsepower(Integer.parseInt(carInformation.get("horsepower")));
+        car.setOwnerId(Integer.parseInt(carInformation.get("owner")));
+
+        String[] vendorModel = carInformation.get("model").split("-");
+        car.setVendor(vendorModel[0].toUpperCase());
+        car.setModel(vendorModel[1]);
+        return car;
     }
 }

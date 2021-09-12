@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import ru.lanit.test.model.person.Person;
 import ru.lanit.test.service.personService.IPersonService;
 import ru.lanit.test.validation.PostValidation;
 
@@ -34,6 +35,8 @@ public class PersonValidation implements PostValidation {
                 return new ResponseEntity<>("Validation problem", HttpStatus.BAD_REQUEST);
             }
         }
+        Person person = createPerson(jsonMap);
+        personIService.save(person);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
@@ -107,5 +110,17 @@ public class PersonValidation implements PostValidation {
             return false;
         }
         return new Date().compareTo(currentDate) > 0;
+    }
+
+    private Person createPerson(Map<String, String> personInformation) {
+        Person person1 = new Person();
+        person1.setId(Long.parseLong(personInformation.get("id")));
+        person1.setName(personInformation.get("name"));
+        try {
+            person1.setBirthdate(new SimpleDateFormat("yyyy-MM-dd").parse(personInformation.get("birthdate")));
+        } catch (ParseException e) {
+            logger.warn("Wrong date format");
+        }
+        return person1;
     }
 }

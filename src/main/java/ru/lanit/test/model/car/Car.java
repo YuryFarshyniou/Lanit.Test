@@ -1,12 +1,14 @@
 package ru.lanit.test.model.car;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @Table
+@NoArgsConstructor
 public class Car {
 
     @Id

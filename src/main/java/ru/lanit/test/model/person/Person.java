@@ -1,19 +1,14 @@
 package ru.lanit.test.model.person;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
+@NoArgsConstructor
 public class Person {
     @Id
     @Column(nullable = false)
@@ -25,7 +20,4 @@ public class Person {
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date birthdate;
-
-    public Person() {
-    }
 }

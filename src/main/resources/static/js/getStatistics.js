@@ -1,16 +1,15 @@
 $(document).ready(
     function () {
-        $("#sendIdForm").submit(function (event) {
+        $("#callStatistics").submit(function (event) {
             event.preventDefault();
             ajaxPost();
         });
 
         function ajaxPost() {
-
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "personWithCars?personId=" + $("#inputPersonId").val(),
+                url: "statistics",
                 dataType: 'json',
                 success: function (result) {
                     console.log(result)

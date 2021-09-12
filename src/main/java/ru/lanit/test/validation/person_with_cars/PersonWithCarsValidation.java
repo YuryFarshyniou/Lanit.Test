@@ -1,5 +1,7 @@
 package ru.lanit.test.validation.person_with_cars;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -11,11 +13,14 @@ import ru.lanit.test.service.personService.IPersonService;
 import ru.lanit.test.validation.GetValidation;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class PersonWithCarsValidation implements GetValidation<PersonWithCars> {
     private final IPersonService personService;
     private final ICarService carService;
+    private final Logger logger = LoggerFactory.getLogger(PersonWithCarsValidation.class);
 
     public PersonWithCarsValidation(IPersonService personService,
                                     ICarService carService) {
@@ -25,9 +30,10 @@ public class PersonWithCarsValidation implements GetValidation<PersonWithCars> {
 
     @Override
     public ResponseEntity<PersonWithCars> validation(String id) {
-        if (id.isEmpty()) {
+        if (!validationId(id)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
         Long personId = Long.parseLong(id);
         Person person = personService.findPersonById(personId);
         if (person == null) {
@@ -49,6 +55,26 @@ public class PersonWithCarsValidation implements GetValidation<PersonWithCars> {
         personWithCars.setName(person.getName());
         personWithCars.setCars(cars);
         return personWithCars;
+    }
+
+    private boolean validationId(String id) {
+        if (id.isEmpty()) {
+            return false;
+        }
+        Pattern pattern = Pattern.compile("^\\d*$");
+        Matcher matcher = pattern.matcher(id);
+        if (matcher.find()) {
+            try {
+                long personId = Long.parseLong(matcher.group());
+            } catch (NumberFormatException e) {
+                logger.warn("Too big id number!");
+                return false;
+            }
+            return true;
+        } else {
+            logger.warn("This id is not a number!");
+            return false;
+        }
     }
 
 }

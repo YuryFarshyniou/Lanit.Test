@@ -1,4 +1,4 @@
-package ru.lanit.test.validation.delete;
+package ru.lanit.test.utils.validation.delete;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import ru.lanit.test.service.carService.ICarService;
 import ru.lanit.test.service.personService.IPersonService;
-import ru.lanit.test.validation.DeleteValidation;
+import ru.lanit.test.utils.validation.DeleteValidation;
 
 @Component
 public class DelValidation implements DeleteValidation {

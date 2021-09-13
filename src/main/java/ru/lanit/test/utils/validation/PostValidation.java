@@ -1,4 +1,4 @@
-package ru.lanit.test.validation;
+package ru.lanit.test.utils.validation;
 
 import org.springframework.http.ResponseEntity;
 

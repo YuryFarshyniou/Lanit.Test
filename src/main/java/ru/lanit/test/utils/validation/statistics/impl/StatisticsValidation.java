@@ -1,4 +1,4 @@
-package ru.lanit.test.validation.statistics.impl;
+package ru.lanit.test.utils.validation.statistics.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,7 @@ import ru.lanit.test.controller.person.PersonController;
 import ru.lanit.test.model.statistics.Statistics;
 import ru.lanit.test.service.carService.ICarService;
 import ru.lanit.test.service.personService.IPersonService;
-import ru.lanit.test.validation.statistics.IStatisticsValidation;
+import ru.lanit.test.utils.validation.statistics.IStatisticsValidation;
 
 @Component
 public class StatisticsValidation implements IStatisticsValidation {

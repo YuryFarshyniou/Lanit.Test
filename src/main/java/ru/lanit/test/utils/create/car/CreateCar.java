@@ -1,7 +1,7 @@
-package ru.lanit.test.create.car;
+package ru.lanit.test.utils.create.car;
 
 import org.springframework.stereotype.Component;
-import ru.lanit.test.create.CreateEntityForPostMethod;
+import ru.lanit.test.utils.create.CreateEntityForPostMethod;
 import ru.lanit.test.model.car.Car;
 
 import java.util.Map;

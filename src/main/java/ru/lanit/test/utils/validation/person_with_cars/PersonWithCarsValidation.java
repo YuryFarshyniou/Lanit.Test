@@ -1,17 +1,17 @@
-package ru.lanit.test.validation.person_with_cars;
+package ru.lanit.test.utils.validation.person_with_cars;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import ru.lanit.test.create.personWithCars.ICreatePersonWihCars;
+import ru.lanit.test.utils.create.personWithCars.ICreatePersonWihCars;
 import ru.lanit.test.model.car.Car;
 import ru.lanit.test.model.person.Person;
 import ru.lanit.test.model.person_with_cars.PersonWithCars;
 import ru.lanit.test.service.carService.ICarService;
 import ru.lanit.test.service.personService.IPersonService;
-import ru.lanit.test.validation.GetValidation;
+import ru.lanit.test.utils.validation.GetValidation;
 
 import java.util.List;
 import java.util.regex.Matcher;

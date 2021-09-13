@@ -1,8 +1,8 @@
-package ru.lanit.test.create.person;
+package ru.lanit.test.utils.create.person;
 
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
-import ru.lanit.test.create.CreateEntityForPostMethod;
+import ru.lanit.test.utils.create.CreateEntityForPostMethod;
 import ru.lanit.test.model.person.Person;
 
 import java.text.SimpleDateFormat;

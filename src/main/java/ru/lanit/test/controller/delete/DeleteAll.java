@@ -3,7 +3,7 @@ package ru.lanit.test.controller.delete;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.lanit.test.validation.DeleteValidation;
+import ru.lanit.test.utils.validation.DeleteValidation;
 
 @RestController
 public class DeleteAll {

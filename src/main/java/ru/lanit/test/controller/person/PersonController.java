@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.lanit.test.model.person_with_cars.PersonWithCars;
-import ru.lanit.test.validation.GetValidation;
-import ru.lanit.test.validation.PostValidation;
+import ru.lanit.test.utils.validation.GetValidation;
+import ru.lanit.test.utils.validation.PostValidation;
 
 import java.util.Map;
 

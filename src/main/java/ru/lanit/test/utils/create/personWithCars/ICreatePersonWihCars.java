@@ -1,4 +1,4 @@
-package ru.lanit.test.create.personWithCars;
+package ru.lanit.test.utils.create.personWithCars;
 
 import ru.lanit.test.model.car.Car;
 import ru.lanit.test.model.person.Person;

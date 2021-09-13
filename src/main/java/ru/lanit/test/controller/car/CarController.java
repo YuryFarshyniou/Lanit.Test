@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.lanit.test.controller.person.PersonController;
-import ru.lanit.test.validation.PostValidation;
+import ru.lanit.test.utils.validation.PostValidation;
 
 import java.util.Map;
 

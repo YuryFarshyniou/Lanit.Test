@@ -1,4 +1,4 @@
-package ru.lanit.test.validation.car;
+package ru.lanit.test.utils.validation.car;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import ru.lanit.test.create.CreateEntityForPostMethod;
+import ru.lanit.test.utils.create.CreateEntityForPostMethod;
 import ru.lanit.test.model.car.Car;
 import ru.lanit.test.service.carService.ICarService;
 import ru.lanit.test.service.personService.IPersonService;
-import ru.lanit.test.validation.PostValidation;
+import ru.lanit.test.utils.validation.PostValidation;
 
 import java.util.*;
 import java.util.regex.Matcher;

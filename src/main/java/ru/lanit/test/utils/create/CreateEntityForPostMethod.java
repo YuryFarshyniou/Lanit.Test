@@ -1,4 +1,4 @@
-package ru.lanit.test.create;
+package ru.lanit.test.utils.create;
 
 import java.util.Map;
 

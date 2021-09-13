@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.lanit.test.model.statistics.Statistics;
-import ru.lanit.test.validation.statistics.IStatisticsValidation;
+import ru.lanit.test.utils.validation.statistics.IStatisticsValidation;
 
 @Controller
 public class StatisticsController {

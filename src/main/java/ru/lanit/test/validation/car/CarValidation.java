@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import ru.lanit.test.create.CreateEntityForPostMethod;
 import ru.lanit.test.model.car.Car;
 import ru.lanit.test.service.carService.ICarService;
 import ru.lanit.test.service.personService.IPersonService;
@@ -20,11 +21,14 @@ public class CarValidation implements PostValidation {
     private final Logger logger = LoggerFactory.getLogger(CarValidation.class);
     private final IPersonService personService;
     private final ICarService carService;
+    private final CreateEntityForPostMethod<Car> createCar;
 
-    public CarValidation(@Qualifier("personService") IPersonService personService,
-                         @Qualifier("carService") ICarService carService) {
+    public CarValidation(IPersonService personService,
+                         ICarService carService,
+                         @Qualifier("createCar") CreateEntityForPostMethod<Car> createCar) {
         this.personService = personService;
         this.carService = carService;
+        this.createCar = createCar;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class CarValidation implements PostValidation {
                 return new ResponseEntity<>("Validation problem", HttpStatus.BAD_REQUEST);
             }
         }
-        Car car = createCar(jsonMap);
+        Car car = createCar.createEntity(jsonMap);
         carService.save(car);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
@@ -157,17 +161,5 @@ public class CarValidation implements PostValidation {
         birthdate.setTimeInMillis(date.getTime());
         now.setTimeInMillis(currentTime);
         return now.get(Calendar.YEAR) - birthdate.get(Calendar.YEAR);
-    }
-
-    private Car createCar(Map<String, String> carInformation) {
-        Car car = new Car();
-        car.setId(Long.parseLong(carInformation.get("id")));
-        car.setHorsepower(Integer.parseInt(carInformation.get("horsepower")));
-        car.setOwnerId(Integer.parseInt(carInformation.get("owner")));
-
-        String[] vendorModel = carInformation.get("model").split("-");
-        car.setVendor(vendorModel[0].toUpperCase());
-        car.setModel(vendorModel[1]);
-        return car;
     }
 }

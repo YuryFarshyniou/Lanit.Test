@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import ru.lanit.test.create.personWithCars.ICreatePersonWihCars;
 import ru.lanit.test.model.car.Car;
 import ru.lanit.test.model.person.Person;
 import ru.lanit.test.model.person_with_cars.PersonWithCars;
@@ -20,12 +21,14 @@ import java.util.regex.Pattern;
 public class PersonWithCarsValidation implements GetValidation<PersonWithCars> {
     private final IPersonService personService;
     private final ICarService carService;
+    private final ICreatePersonWihCars createPersonWithCars;
     private final Logger logger = LoggerFactory.getLogger(PersonWithCarsValidation.class);
 
-    public PersonWithCarsValidation(IPersonService personService,
-                                    ICarService carService) {
+    public PersonWithCarsValidation(IPersonService personService, ICarService carService,
+                                    ICreatePersonWihCars createPersonWithCars) {
         this.personService = personService;
         this.carService = carService;
+        this.createPersonWithCars = createPersonWithCars;
     }
 
     @Override
@@ -43,18 +46,9 @@ public class PersonWithCarsValidation implements GetValidation<PersonWithCars> {
         if (cars.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        PersonWithCars personWithCars = createPersonWithCars(person, cars);
+        PersonWithCars personWithCars = createPersonWithCars.createPersonWithCars(person, cars);
 
         return new ResponseEntity<>(personWithCars, HttpStatus.OK);
-    }
-
-    private PersonWithCars createPersonWithCars(Person person, List<Car> cars) {
-        PersonWithCars personWithCars = new PersonWithCars();
-        personWithCars.setId(person.getId());
-        personWithCars.setBirthdate(person.getBirthdate());
-        personWithCars.setName(person.getName());
-        personWithCars.setCars(cars);
-        return personWithCars;
     }
 
     private boolean validationId(String id) {

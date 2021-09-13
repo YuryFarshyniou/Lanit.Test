@@ -7,11 +7,13 @@ $(document).ready(
 
         function ajaxPost() {
 
+            let birthdate = $("#inputPersonBirthdate").val().split("-")
+            let newDate = birthdate[2] + '.' + birthdate[1] + '.' + birthdate[0];
 
             let formData = {
                 id: $("#inputId").val(),
                 name: $("#inputPersonName").val(),
-                birthdate: $("#inputPersonBirthdate").val()
+                birthdate: newDate
             }
 
             $.ajax({

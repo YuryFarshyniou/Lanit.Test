@@ -1,6 +1,7 @@
 package ru.lanit.test.model.person;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 public class Person {
+
     @Id
     @Column(nullable = false)
     private Long id;

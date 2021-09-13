@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface PostValidation {
 
-    ResponseEntity<String> validation(Map<String,String> jsonMap);
+    ResponseEntity<String> validation(Map<String, String> jsonMap);
 }

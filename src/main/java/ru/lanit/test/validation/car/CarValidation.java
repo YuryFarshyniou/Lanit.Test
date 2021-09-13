@@ -115,7 +115,7 @@ public class CarValidation implements PostValidation {
 
         if (matcher.find()) {
             try {
-                long owner = Integer.parseInt(matcher.group());
+                int owner = Integer.parseInt(matcher.group());
             } catch (NumberFormatException e) {
                 logger.warn("Too big ownerId number!");
                 return false;
@@ -128,9 +128,9 @@ public class CarValidation implements PostValidation {
             return false;
         }
         int years = getOwnerAge(date);
-        if(years>=18){
+        if (years >= 18) {
             return true;
-        }else{
+        } else {
             logger.warn("Owner's age is less than 18");
             return false;
         }

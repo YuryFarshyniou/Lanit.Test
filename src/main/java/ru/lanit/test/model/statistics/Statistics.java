@@ -1,6 +1,6 @@
 package ru.lanit.test.model.statistics;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 public class Statistics {

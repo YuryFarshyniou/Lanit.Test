@@ -3,7 +3,10 @@ package ru.lanit.test.model.car;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Data
@@ -12,7 +15,6 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @GeneratedValue(generator = "increment")
     @Column(nullable = false)
     private long id;
 

@@ -93,20 +93,18 @@ public class PersonValidation implements PostValidation {
         }
     }
 
-    /*Т.к. я передаю дату в определенном формате с html,то я валидирую именно этот формат,
-     * но если с html приходит формат,который был указан в ТЗ, просто меняем паттерн на dd.MM.yyyy
-     * и валидируем уже по этому паттерну.*/
     private boolean validateDate(String date) {
         if (date.isEmpty()) {
             logger.warn("Birthdate is null!");
             return false;
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date currentDate;
         try {
             currentDate = simpleDateFormat.parse(date);
+
         } catch (ParseException e) {
-            logger.info("Birthdate doesn't match to format!!");
+            logger.warn("Birthdate doesn't match to format!!");
             return false;
         }
         return new Date().compareTo(currentDate) > 0;
@@ -117,7 +115,7 @@ public class PersonValidation implements PostValidation {
         person1.setId(Long.parseLong(personInformation.get("id")));
         person1.setName(personInformation.get("name"));
         try {
-            person1.setBirthdate(new SimpleDateFormat("yyyy-MM-dd").parse(personInformation.get("birthdate")));
+            person1.setBirthdate(new SimpleDateFormat("dd.MM.yyyy").parse(personInformation.get("birthdate")));
         } catch (ParseException e) {
             logger.warn("Wrong date format");
         }

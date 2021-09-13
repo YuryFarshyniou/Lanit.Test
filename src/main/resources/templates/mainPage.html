@@ -8,8 +8,12 @@
 <body>
 <header th:insert="fragments/header :: navigationBar"></header>
 <div class="container">
-    <div class="row">
-        <div class="col-5">
+
+    <div class="row mt-3">
+        <h2>Hi!Please,choose the operation: </h2>
+    </div>
+    <div class="row mt-3 align-items-start">
+        <div class="col-3">
             <p>
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#personCollapse" role="button"
                    aria-expanded="false" aria-controls="personCollapse">
@@ -40,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-2">
             <p>
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#carCollapse" role="button"
                    aria-expanded="false" aria-controls="carCollapse">
@@ -75,25 +79,29 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-5">
+        <div class="col-1  " >
+            <form id="callStatistics">
+                <button type="submit"  class="btn btn-primary  mx-3">Statistics</button>
+            </form>
+        </div>
+        <div class="col-1">
+            <form id="deleteAll">
+                <button type="submit" class="btn btn-primary  mx-3">DeleteAll</button>
+            </form>
+        </div>
+        <div class="col-4 mx-4">
             <form id="sendIdForm">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="inputPersonId" class="form-label">PersonId</label>
                     <input type="text" class="form-control" id="inputPersonId" aria-describedby="PersonId">
                     <div id="PersonId" class="form-text">Enter person id</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Get PersonWithCars entity</button>
+                <button type="submit" class="btn btn-primary  ">Get PersonWithCars entity</button>
             </form>
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
-            <form id="callStatistics">
-                <button type="submit" class="btn btn-primary mt-5">Statistics</button>
-            </form>
-        </div>
+
     </div>
     <br/>
     <div class="row">
@@ -105,6 +113,7 @@
 <script th:src="@{/js/saveCar.js}"></script>
 <script th:src="@{/js/getPersonWithCars.js}"></script>
 <script th:src="@{/js/getStatistics.js}"></script>
+<script th:src="@{/js/deleteAll.js}"></script>
 
 </body>
 </html>

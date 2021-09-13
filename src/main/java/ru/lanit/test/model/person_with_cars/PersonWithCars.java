@@ -1,6 +1,7 @@
 package ru.lanit.test.model.person_with_cars;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.lanit.test.model.car.Car;
 
 import java.util.Date;

@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
+
     @Query("select p.id from Person p where p.id=:personID")
     Long findPersonId(long personID);
 
@@ -17,6 +18,6 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     Person findPersonById(long personId);
 
-    @Query("select COUNT(p.id) from Person p" )
+    @Query("select COUNT(p.id) from Person p")
     Long countPerson();
 }

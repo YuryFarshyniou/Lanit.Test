@@ -17,7 +17,7 @@ $(document).ready(
                 },
                 error: function (result) {
                     $("#postResultDiv").html(
-                        JSON.stringify(result) + "<br>");
+                        result.status + " " + result.statusText + "<br>");
                     console.log("Error" + result)
                 }
             });

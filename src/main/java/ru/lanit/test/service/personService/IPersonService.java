@@ -1,6 +1,6 @@
 package ru.lanit.test.service.personService;
 
-import ru.lanit.test.model.person.Person;
+import ru.lanit.test.model.Person;
 import ru.lanit.test.service.IService;
 
 import java.util.Date;

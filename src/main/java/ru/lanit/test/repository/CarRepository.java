@@ -1,9 +1,9 @@
-package ru.lanit.test.repository.carRepository;
+package ru.lanit.test.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.lanit.test.model.car.Car;
+import ru.lanit.test.model.Car;
 
 import java.util.List;
 

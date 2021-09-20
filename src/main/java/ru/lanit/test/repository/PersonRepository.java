@@ -1,9 +1,9 @@
-package ru.lanit.test.repository.personRepository;
+package ru.lanit.test.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.lanit.test.model.person.Person;
+import ru.lanit.test.model.Person;
 
 import java.util.Date;
 

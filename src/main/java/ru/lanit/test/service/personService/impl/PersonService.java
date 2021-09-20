@@ -2,8 +2,8 @@ package ru.lanit.test.service.personService.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.lanit.test.model.person.Person;
-import ru.lanit.test.repository.personRepository.PersonRepository;
+import ru.lanit.test.model.Person;
+import ru.lanit.test.repository.PersonRepository;
 import ru.lanit.test.service.personService.IPersonService;
 
 import java.util.Date;

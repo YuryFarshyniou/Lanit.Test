@@ -2,8 +2,8 @@ package ru.lanit.test.service.carService.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.lanit.test.model.car.Car;
-import ru.lanit.test.repository.carRepository.CarRepository;
+import ru.lanit.test.model.Car;
+import ru.lanit.test.repository.CarRepository;
 import ru.lanit.test.service.carService.ICarService;
 
 import java.util.List;
